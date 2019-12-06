@@ -1,0 +1,11 @@
+<h1>Editer un livre</h1>
+<hr>
+<p><strong>Titre :</strong><%= @livre.title %></p>
+<hr>
+<%= form_tag "/books/#{@livre.id}", method: "patch" do %>
+    <input type="text" name="title" value="<%= @livre.title %>">
+     <%= select_tag "categories", options_from_collection_for_select(@categories, 'id', 'title') %>
+    <input type="submit" value="Editer">
+<% end %>
+<hr>
+<a href="/">Retour à la liste</a>

@@ -1,0 +1,38 @@
+<h1>Liste de mes Livres</h1>
+<hr>
+<table border="1">
+    <thead>
+        <tr>
+            <th style="padding:15px">ID</th> 
+            <th style="padding:15px">Titre</th>
+            <th style="padding:15px">Categorie</th>
+            <th style="padding:15px"></th> 
+        </tr>
+    </thead>
+    <tbody>    
+    <% @livres.each do |livre| %>
+        <tr>
+            <td style="padding:15px"><%= livre.id %></td>          
+            <td style="padding:15px">
+                <a href="/books/<%= livre.id %>"><%= livre.title %></a>
+            </td>
+            <td style="padding:15px;">
+            <% if livre.category %>
+                <%= livre.category.title %>
+            <% else %>
+                ...
+            <% end %>
+            </td>
+            <td style="text-align:center;">
+                <a href="/books/<%= livre.id %>/delete" style="color:#fff;background:red">X</a>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<hr>
+<%= form_tag "/books", method: "post" do %>
+    <input type="text" name="title">
+    <%= select_tag "categories", options_from_collection_for_select(@categories, 'id', 'title') %>
+    <input type="submit" value="Ajouter">
+<% end %>

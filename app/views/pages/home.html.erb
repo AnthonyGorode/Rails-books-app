@@ -1,0 +1,18 @@
+<h1>Ma première page en RubyOnRails</h1>
+<hr>
+<h2>Interpollation</h2>
+<p><%= @variable %></p>
+<hr>
+<h2>Condition</h2>
+<% if @nombre == 5 %>
+    <p>Super la variable @nombre vaut 5
+<% else %>
+    <p>Dommage !</p>
+<% end %>
+<hr>
+<h2>Boucle</h2>
+<% @nombre.times do |i| %>
+   <p>Iteration : <%= i %> </p>
+<% end %>
+
+
